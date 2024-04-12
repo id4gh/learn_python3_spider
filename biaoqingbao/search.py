@@ -1,16 +1,16 @@
-#-*- coding:UTF-8 -*-
+# -*- coding:UTF-8 -*-
 import glob
 import time
 
 import itchat
 from itchat.content import TEXT, PICTURE
 
-
 imgs = []
+
 
 def searchImage(text):
     print('收到关键词: ', text)
-    for name in glob.glob('/home/wistbean/biaoqingbao/*'+text+'*.jpg'):
+    for name in glob.glob('/home/wistbean/biaoqingbao/*' + text + '*.jpg'):
         imgs.append(name)
 
 

@@ -4,7 +4,7 @@ import xlwt
 
 
 def request_douban(url):
-headers = {
+    headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                       'Chrome/88.0.4324.146 Safari/537.36',
     }
@@ -42,9 +42,9 @@ def save_to_excel(soup):
         if item.find(class_='inq') is not None:
             item_intr = item.find(class_='inq').string
         else:
-            item_intr = 'NOT AVAILABLE'        
+            item_intr = 'NOT AVAILABLE'
 
-        # print('爬取电影：' + item_index + ' | ' + item_name +' | ' + item_img +' | ' + item_score +' | ' + item_author +' | ' + item_intr )
+            # print('爬取电影：' + item_index + ' | ' + item_name +' | ' + item_img +' | ' + item_score +' | ' + item_author +' | ' + item_intr )
         print('爬取电影：' + item_index + ' | ' + item_name + ' | ' + item_score + ' | ' + item_intr)
 
         global n

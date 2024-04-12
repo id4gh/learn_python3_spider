@@ -7,6 +7,7 @@
 
 import scrapy
 
+
 class StackoverflowPythonItem(scrapy.Item):
     _id = scrapy.Field()
     questions = scrapy.Field()
@@ -14,4 +15,3 @@ class StackoverflowPythonItem(scrapy.Item):
     answers = scrapy.Field()
     views = scrapy.Field()
     links = scrapy.Field()
-

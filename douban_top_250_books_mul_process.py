@@ -5,13 +5,15 @@ import multiprocessing
 import time
 import sys
 
+
 def request_douban(url):
     try:
-        response = requests.get(url,headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+        response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
         if response.status_code == 200:
             return response.text
     except requests.RequestException:
         return None
+
 
 def main(url):
     sys.setrecursionlimit(1000000)
@@ -40,12 +42,13 @@ def main(url):
         }
         data.append(item)
     return data
-    
+
+
 if __name__ == '__main__':
     startTime = time.time()
     data = []
     urls = []
-    pool = multiprocessing.Pool(multiprocessing.cpu_count()-1)
+    pool = multiprocessing.Pool(multiprocessing.cpu_count() - 1)
     for i in range(0, 10):
         url = 'https://movie.douban.com/top250?start=' + str(i * 25) + '&filter='
         urls.append(url)
@@ -60,13 +63,13 @@ if __name__ == '__main__':
     sheet.write(0, 3, '评分')
     sheet.write(0, 4, '作者')
     sheet.write(0, 5, '简介')
-    for index,item in enumerate(data):
-        sheet.write(index+1, 0, item['item_name'])
-        sheet.write(index+1, 1, item['item_img'])
-        sheet.write(index+1, 2, item['item_index'])
-        sheet.write(index+1, 3, item['item_score'])
-        sheet.write(index+1, 4, item['item_author'])
-        sheet.write(index+1, 5, item['item_intr'])
+    for index, item in enumerate(data):
+        sheet.write(index + 1, 0, item['item_name'])
+        sheet.write(index + 1, 1, item['item_img'])
+        sheet.write(index + 1, 2, item['item_index'])
+        sheet.write(index + 1, 3, item['item_score'])
+        sheet.write(index + 1, 4, item['item_author'])
+        sheet.write(index + 1, 5, item['item_intr'])
     book.save(u'豆瓣最受欢迎的250部电影-mul.xlsx')
 
     endTime = time.time()

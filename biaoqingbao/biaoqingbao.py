@@ -1,4 +1,4 @@
-#-*- coding:UTF-8 -*-
+# -*- coding:UTF-8 -*-
 import os
 from time import time
 
@@ -28,7 +28,6 @@ class DownloadBiaoqingbao(Thread):
 
 
 def download_biaoqingbaos(url, path):
-
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'lxml')
     img_list = soup.find_all('img', class_='ui image lazy')
@@ -53,7 +52,7 @@ if __name__ == '__main__':
 
     # 构建所有的链接
     _url = 'https://fabiaoqing.com/biaoqing/lists/page/{page}.html'
-    urls = [_url.format(page=page) for page in range(1, 4328+1)]
+    urls = [_url.format(page=page) for page in range(1, 4328 + 1)]
 
     queue = Queue()
     path = '/home/wistbean/biaoqingbao/'
@@ -70,7 +69,4 @@ if __name__ == '__main__':
 
     queue.join()
 
-    print('下载完毕耗时：  ', time()-start)
-
-
-
+    print('下载完毕耗时：  ', time() - start)

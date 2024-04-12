@@ -14,5 +14,3 @@ class QiushibaikeItem(scrapy.Item):
     author = scrapy.Field()
     content = scrapy.Field()
     _id = scrapy.Field()
-
-

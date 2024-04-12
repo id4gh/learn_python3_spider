@@ -7,7 +7,6 @@ from bs4 import BeautifulSoup
 
 
 def header(referer):
-
     headers = {
         'Host': 'i.meizitu.net',
         'Pragma': 'no-cache',
@@ -33,7 +32,6 @@ def request_page(url):
 
 
 def get_page_urls():
-
     for i in range(1, 2):
         baseurl = 'https://www.mzitu.com/page/{}'.format(i)
         html = request_page(baseurl)
@@ -60,6 +58,7 @@ def download_Pic(title, image_list):
             img = requests.get(item, headers=header(item)).content
             f.write(img)
         j += 1
+
 
 def download(url):
     html = request_page(url)

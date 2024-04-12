@@ -6,6 +6,7 @@
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import pymongo
 
+
 class StackoverflowPipeline(object):
     def __init__(self):
         self.connection = pymongo.MongoClient('68.183.180.71', 27017)

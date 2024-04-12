@@ -1,6 +1,6 @@
 import time
 import requests
-from PIL import Image
+from pil_plus import Image
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By

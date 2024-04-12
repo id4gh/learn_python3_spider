@@ -22,5 +22,3 @@ class QiushibaikePipeline(object):
     def __del__(self):
         if self.connection:
             self.connection.close()
-
-

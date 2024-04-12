@@ -1,4 +1,4 @@
-#-*- coding:UTF-8 -*-
+# -*- coding:UTF-8 -*-
 import json
 import time
 import pdfkit
@@ -6,7 +6,6 @@ import pdfkit
 import requests
 
 base_url = 'https://mp.weixin.qq.com/mp/profile_ext'
-
 
 # 这些信息不能抄我的，要用你自己的才有效
 headers = {
@@ -25,7 +24,6 @@ cookies = {
     'wap_sid2': '写你自己的',
     'wxuin': '3340537333'
 }
-
 
 
 def get_params(offset):
@@ -64,7 +62,7 @@ def get_list_data(offset):
                 title = msg_info['title']
                 content_url = msg_info['content_url']
                 # 自己定义存储路径
-                pdfkit.from_url(content_url, '/home/wistbean/wechat_article/'+title+'.pdf')
+                pdfkit.from_url(content_url, '/home/wistbean/wechat_article/' + title + '.pdf')
                 print('获取到原创文章：%s ： %s' % (title, content_url))
         except:
             print('不是图文')

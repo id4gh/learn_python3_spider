@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
 class Wechat_Moment():
     def __init__(self):
         desired_caps = {}
@@ -26,7 +27,6 @@ class Wechat_Moment():
         self.wait = WebDriverWait(self.driver, 300)
         print('微信启动...')
 
-
     def login(self):
         # 获取到登录按钮后点击
         login_btn = self.wait.until(EC.element_to_be_clickable((By.ID, "com.tencent.mm:id/e4g")))
@@ -35,10 +35,12 @@ class Wechat_Moment():
         change_login_btn = self.wait.until(EC.element_to_be_clickable((By.ID, "com.tencent.mm:id/cou")))
         change_login_btn.click()
         # 获取输入账号元素并输入
-        account = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@resource-id="com.tencent.mm:id/cos"]/android.widget.EditText')))
+        account = self.wait.until(EC.presence_of_element_located(
+            (By.XPATH, '//*[@resource-id="com.tencent.mm:id/cos"]/android.widget.EditText')))
         account.send_keys("xxxxxxxx")
         # 获取密码元素并输入
-        password = self.wait.until(EC.presence_of_element_located((By.XPATH,  '//*[@resource-id="com.tencent.mm:id/cot"]/android.widget.EditText')))
+        password = self.wait.until(EC.presence_of_element_located(
+            (By.XPATH, '//*[@resource-id="com.tencent.mm:id/cot"]/android.widget.EditText')))
         password.send_keys("xxxxxx")
         # 登录
         login = self.wait.until(EC.element_to_be_clickable((By.ID, "com.tencent.mm:id/cov")))
@@ -47,7 +49,6 @@ class Wechat_Moment():
         no_btn = self.wait.until(EC.element_to_be_clickable((By.ID, "com.tencent.mm:id/az9")))
         no_btn.click()
         print('登录成功...')
-
 
     def find_xiaoshuaib(self):
         # 获取到搜索按钮后点击
@@ -79,7 +80,7 @@ class Wechat_Moment():
             items = self.wait.until(EC.presence_of_all_elements_located((By.ID, 'com.tencent.mm:id/eew')))
             # 滑动
             self.driver.swipe(self.start_x, self.start_y, self.end_x, self.end_y, 2000)
-            #遍历获取每个List数据
+            # 遍历获取每个List数据
             for item in items:
                 moment_text = item.find_element_by_id('com.tencent.mm:id/kt').text
                 day_text = item.find_element_by_id('com.tencent.mm:id/eke').text
@@ -87,19 +88,9 @@ class Wechat_Moment():
                 print('抓取到小帅b朋友圈数据： %s' % moment_text)
                 print('抓取到小帅b发布时间： %s月%s' % (month_text, day_text))
 
+
 if __name__ == '__main__':
     wc_moment = Wechat_Moment()
     wc_moment.login()
     wc_moment.find_xiaoshuaib()
     wc_moment.get_data()
-
-
-
-
-
-
-
-
-
-
-
